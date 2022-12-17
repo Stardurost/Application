@@ -1,0 +1,118 @@
+﻿<Page x:Class="CRMTelmate.View.Pages.ClientInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CRMTelmate.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Клиент" Background="{StaticResource GrayscalePrimary}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+            <!--первая колонка список услуг у клиента-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <TextBlock Style="{StaticResource H2}" Text="Услуги клиента"/>
+                <ComboBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" MinWidth="70">
+                </ComboBox>
+            </StackPanel>
+            <!--сам список услуг в листвью. я его не вижу тк не подключена бд если некрасиво - потом исправлю-->
+            <ListView Grid.Row="2" Name="LViewProduct"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock 
+                                    Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding ServiceName}"/>
+
+                                <TextBlock Grid.Row="1"
+                                    Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding ServiceDescription}"/>
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
+                                    <Button Content="Редактировать" Name="BtnEditSrvc"
+                                            Click="BtnEditSrvc_Click" Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
+
+                                    <Button Content="Удалить" Name="BtnDeleteSrvc" Click="BtnDeleteSrvc_Click" 
+                                            Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        
+        
+        
+        <!--страшная вторая колонка со статистикой делать пока не буду-->
+            
+            <!--третья колонка, инфа о клиенте
+        не указывала здесь названия текстбоксам, мне кажется если вы будете писать логику вам легче будет все самим тут назвать-->
+        <StackPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource H2}" Text="Клиент"/>
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock Style="{StaticResource H4}" Text="Имя*"></TextBlock>
+                <TextBox MaxLength="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock Style="{StaticResource H4}" Text="Фамилия*"></TextBlock>
+                <TextBox MaxLength="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock Style="{StaticResource H4}" Text="Отчество"></TextBlock>
+                <TextBox MaxLength="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock Style="{StaticResource H4}" Text="Телефон*"></TextBlock>
+                <TextBox MaxLength="100" ></TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock Text="e-mail*" Style="{StaticResource H4}"></TextBlock>
+                <TextBox MaxLength="100"></TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock TextWrapping="WrapWithOverflow" Text="Дата регистрации*" TextAlignment="Right" MaxWidth="100" Style="{StaticResource H4}"></TextBlock>
+                <TextBox MaxLength="100"></TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ClientInfo}">
+                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Right"  Text="Дата рождения*" MaxWidth="100" Style="{StaticResource H4}"></TextBlock>
+                <TextBox MaxLength="100"></TextBox>
+            </StackPanel>
+
+            <CheckBox Content="клиент не пользуется услугами" Style="{StaticResource CheckBoxClientService}"/>
+
+            <Button Style="{StaticResource ActionButton}" Height="30" Width="200" Margin="5"
+                        Content="Сохранить"
+                        Name="BtnSave" 
+                        Click="BtnSave_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

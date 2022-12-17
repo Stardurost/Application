@@ -1,0 +1,21 @@
+﻿<Window x:Class="CRMTelmate.View.Windows.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMTelmate.View.Windows"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="500" Width="350"
+        WindowStartupLocation="CenterScreen"
+        Icon="/CRMTelmate;component/Resources/logo.ico" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel Margin="40" VerticalAlignment="Stretch">
+            <Image Source="/CRMTelmate;component/Resources/logo.png" Height="100" Margin="0 0 0 50"/>
+            <TextBlock Style="{StaticResource H1}">Авторизация</TextBlock>
+            <TextBox x:Name="TextBoxLogin"/>
+            <PasswordBox x:Name="PswdBoxLogin"/>
+            <Button x:Name="BtnLogin" Style="{StaticResource ActionButton}" Content="Войти в систему" Click="BtnLogin_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

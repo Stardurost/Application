@@ -1,0 +1,145 @@
+﻿<Application x:Class="CRMTelmate.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CRMTelmate"
+             StartupUri="View\Windows\Authorization.xaml">
+    <Application.Resources>
+        <!-- Акцентный цвет (оранжевый) используется для call-to-action действий
+        Основной цвет (фиолетовый) должен исопльзоваться на всех страницах-->
+        <SolidColorBrush x:Key="AccentColor" Color="#FF4F12"/>
+        <SolidColorBrush x:Key="PrimaryColor" Color="#7700FF"/>
+        <SolidColorBrush x:Key="AccentLighterColor" Color="#FF5E2D"/>
+        <SolidColorBrush x:Key="PrimaryLighterColor" Color="#9466FF"/>
+
+
+        <SolidColorBrush x:Key="GrayscaleSecondary" Color="#F4F4F5"/>
+        <SolidColorBrush x:Key="GrayscalePrimary" Color="white"/>
+        <SolidColorBrush x:Key="GrayscaleAccent" Color="#D3D4DB"/>
+
+
+        <!--пыталась подключить фонт по какойто причине вс на это все равно
+        если вы сможете это починить то супер, если нет - уберем-->
+        <Style x:Key="RostelecomBasis">
+            <Setter Property="TextElement.FontFamily" Value="/CRMTelmate;component/Fonts/RostelecomBasis-Bold.otf"/>
+        </Style>
+
+        <!--общий стиль
+        
+        заголовки-->
+
+        <Style TargetType="TextBlock" x:Key="H1">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="28"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="H2">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="22"/>
+            
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="H3">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="H4">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!--стиль для кнопок действия-->
+        <Style TargetType="Button" x:Key="ActionButton">
+            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16px"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource GrayscalePrimary}"/>
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="Image" x:Key="icon">
+            <Setter Property="Margin" Value="27 27 0 27"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="MinWidth" Value="100"></Setter>
+
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
+
+        <!--стили используемые в окне мейн-->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource AccentColor }"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+        <!--стиль для кнопок внутри левого меню-->
+        <Style TargetType="Button" x:Key="MenuButton">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Margin" Value="0 10 15 10"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="22px"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource GrayscalePrimary}"/>
+        </Style>
+
+        
+        
+        <!--стиль для вывода информации о клиенте в стак панель используется в clientinfopage-->
+        <Style TargetType="StackPanel" x:Key="ClientInfo">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="2 5 35 2"/>
+        </Style>
+
+        <Style TargetType="CheckBox" x:Key="CheckBoxClientService">
+            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+    </Application.Resources>
+</Application>

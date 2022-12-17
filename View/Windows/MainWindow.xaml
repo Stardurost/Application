@@ -1,0 +1,55 @@
+﻿<Window x:Class="CRMTelmate.View.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMTelmate.View.Windows"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="450" MinWidth="1000" Height="650" Width="600" WindowStartupLocation="CenterScreen" Background="{StaticResource GrayscaleSecondary}" Icon="/CRMTelmate;component/Resources/logo.ico">
+    <Grid>
+        <!--задаю меню и правую часть экрана под хедер и фрейм-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MaxWidth="250"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--кнопки и картинка в меню-->
+        <Grid x:Name="Menu">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.75*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/CRMTelmate;component/Resources/logo.png"/>
+                    <TextBlock Style="{StaticResource H2}" Foreground="{StaticResource PrimaryColor}" Text="CRMTelmate" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
+                </StackPanel>                
+            </Grid>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+
+                <Button  Style="{StaticResource MenuButton}" Content="Клиенты" Name="BtnClients" Click="BtnClients_Click"/>
+                <Button  Style="{StaticResource MenuButton}" Content="Услуги" Name="BtnServices"/>
+                <Button  Style="{StaticResource MenuButton}" Content="Статистика" Name="BtnStatistics"/>
+            </StackPanel>
+
+            <Button Grid.Row="2"  Style="{StaticResource MenuButton}" Content="Выход" VerticalAlignment="Bottom" Name="BtnBack" Click="BtnBack_Click"/>
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource H1}" HorizontalAlignment="Stretch" Text="{Binding ElementName=FrameMain, Path=Content.Title}"/>
+            
+            <Frame Grid.Row="1" Background="{StaticResource GrayscalePrimary}" Name="FrameMain" NavigationUIVisibility="Hidden" BorderBrush="{StaticResource GrayscalePrimary}">
+            </Frame>
+        </Grid>
+        
+    </Grid>
+</Window>
