@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:@try"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <!--ndannd-->
     </Application.Resources>
 </Application>
