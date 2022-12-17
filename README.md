@@ -1,2 +1,3 @@
-# Application
-ffff
+# CRM Telmate
+
+CRM система для работы с клиентами и услугами.
