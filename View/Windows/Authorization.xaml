@@ -11,8 +11,9 @@
     <Grid>
         <StackPanel Margin="40" VerticalAlignment="Stretch">
             <Image Source="/CRMTelmate;component/Resources/logo.png" Height="100" Margin="0 0 0 50"/>
-            <TextBlock Style="{StaticResource H1}">Авторизация</TextBlock>
+            <TextBlock Style="{StaticResource H2}">Логин</TextBlock>
             <TextBox x:Name="TextBoxLogin"/>
+            <TextBlock Style="{StaticResource H2}">Пароль</TextBlock>
             <PasswordBox x:Name="PswdBoxLogin"/>
             <Button x:Name="BtnLogin" Style="{StaticResource ActionButton}" Content="Войти в систему" Click="BtnLogin_Click"/>
         </StackPanel>
