@@ -15,5 +15,9 @@ namespace CRMTelmate
     {
         public static Entities.TelmateEntities Context { get; } = new Entities.TelmateEntities();
         public static Entities.User CurrentUser = null;
+        public static void ResetCurrentUser()
+        {
+            CurrentUser = null;
+        }
     }
 }
