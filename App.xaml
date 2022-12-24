@@ -69,6 +69,7 @@
             <Setter Property="Background" Value="{StaticResource AccentColor}"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10, 0" />
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16px"/>
@@ -83,6 +84,10 @@
         <Style TargetType="Image" x:Key="icon">
             <Setter Property="Margin" Value="27 27 0 27"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style TargetType="Image" x:Key="Avatar">
+            <Setter Property="Width" Value="48"></Setter>
+            <Setter Property="MaxWidth" Value="48"></Setter>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="5"></Setter>
@@ -107,7 +112,7 @@
 
         <!--стили используемые в окне мейн-->
         <Style TargetType="ComboBox">
-            <Setter Property="Background" Value="{StaticResource AccentColor }"></Setter>
+            <Setter Property="Background" Value="{StaticResource AccentColor}"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
@@ -117,7 +122,7 @@
         <!--стиль для кнопок внутри левого меню-->
         <Style TargetType="Button" x:Key="MenuButton">
             <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="Margin" Value="0 10 15 10"/>
+            <Setter Property="Margin" Value="15 10 15 10"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="22px"/>

@@ -17,6 +17,5 @@
             <PasswordBox x:Name="PswdBoxLogin"/>
             <Button x:Name="BtnLogin" Style="{StaticResource ActionButton}" Content="Войти в систему" Click="BtnLogin_Click"/>
         </StackPanel>
-
     </Grid>
 </Window>

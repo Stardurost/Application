@@ -20,10 +20,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <!--комбо боксы и серчбар-->
-            <ComboBox BorderBrush="#FFFF4F12"/>
-            <ComboBox Grid.Column="1"/>
+
+            <ComboBox SelectionChanged="CBSort_SelectionChanged" x:Name="CBSort" BorderBrush="#FFFF4F12"/>
+            <ComboBox SelectionChanged="CBFilter_SelectionChanged" x:Name="CBFilter" BorderBrush="#FFFF4F12" Grid.Column="1"/>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -32,7 +31,6 @@
                 <Image Style="{StaticResource icon}" Source="/CRMTelmate;component/Resources/searchicon.png"/>
                 <TextBox Grid.Column="1" x:Name="TBSearch" TextChanged="TBSearch_TextChanged"/>
             </Grid>
-
         </Grid>
 
         <ListView Grid.Row="1" Name="LViewClients"
@@ -43,8 +41,6 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
-            <!--этот код мне не видно, подредачу когда будет бд /маша
-            переменные в биндинге тоже связаны с бд и должны быть названы как элементы в бд-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="{StaticResource AccentColor}">
@@ -53,34 +49,28 @@
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="150*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding Image}"/>
+
+                            <Image Style="{StaticResource Avatar}" Source="{Binding Avatar}" />
 
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
-                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                    Text="{Binding SurnameClient}"/>
+                                <TextBlock Margin="10, 0, 0, 0" TextWrapping="WrapWithOverflow" Width="230" Text="{Binding FullName}"/>
 
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
                                     <Button Style="{StaticResource ActionButton}" Content="Редактировать" Name="BtnEdit"
-                                            Click="BtnEdit_Click" Visibility="{Binding AdminControlVisibility}"/>
+                                            Click="BtnEdit_Click"/>
 
-                                    <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete" Click="BtnDelete_Click" 
-                                            Visibility="{Binding AdminControlVisibility}"/>
+                                    <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete" Click="BtnDelete_Click" />
                                 </StackPanel>
-
                             </Grid>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
-
     </Grid>
 </Page>

@@ -28,7 +28,7 @@ namespace CRMTelmate.View.Windows
 
         private void BtnClients_Click(object sender, RoutedEventArgs e)
         {
-            FrameMain.Navigate(new Pages.ClientInfoPage());
+            FrameMain.Navigate(new Pages.ClientPage());
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -41,6 +41,7 @@ namespace CRMTelmate.View.Windows
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
+            App.ResetCurrentUser();
             Authorization Authorization = new Authorization();
             this.Close();
             Authorization.Show();
