@@ -23,6 +23,7 @@ namespace CRMTelmate.View.Pages
         public ClientPage()
         {
             InitializeComponent();
+            LViewClients.ItemsSource = App.Context.Clients.ToList();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,26 @@ namespace CRMTelmate.View.Pages
             //var currentClient = button.DataContext as Entities.Clients;
 
             //NavigationService.Navigate(new ClientInfoPage(currentClient));
+        }
+
+        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateClients();
+        }
+
+        private void UpdateClients()
+        {
+            var clients = App.Context.Clients.ToList();
+            clients = clients.Where(p => p.SurnameClient.ToLower()
+                     .Contains(TBSearch.Text.ToLower())).ToList();
+
+
+            LViewClients.ItemsSource = clients;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateClients();
         }
     }
 }

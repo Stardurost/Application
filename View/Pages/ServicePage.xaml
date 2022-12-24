@@ -1,4 +1,4 @@
-﻿<Page x:Class="CRMTelmate.View.Pages.ClientPage"
+﻿<Page x:Class="CRMTelmate.View.Pages.ServicePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CRMTelmate.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Список клиентов" Background="{StaticResource GrayscalePrimary}" Loaded="Page_Loaded">
+      Title="Список услуг" Background="{StaticResource GrayscalePrimary}" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <!--комбо боксы и серчбар-->
             <ComboBox BorderBrush="#FFFF4F12"/>
             <ComboBox Grid.Column="1"/>
@@ -35,7 +35,7 @@
 
         </Grid>
 
-        <ListView Grid.Row="1" Name="LViewClients"
+        <ListView Grid.Row="1" Name="LViewService"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -63,13 +63,22 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                    Text="{Binding SurnameClient}"/>
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding NameService}"/>
+
+                                <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Description}"/>
+
+                                <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Cost}"/>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
                                     <Button Style="{StaticResource ActionButton}" Content="Редактировать" Name="BtnEdit"
-                                            Click="BtnEdit_Click" Visibility="{Binding AdminControlVisibility}"/>
+                                             Visibility="{Binding AdminControlVisibility}"/>
 
-                                    <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete" Click="BtnDelete_Click" 
+                                    <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete" 
                                             Visibility="{Binding AdminControlVisibility}"/>
                                 </StackPanel>
 

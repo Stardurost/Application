@@ -13,5 +13,7 @@ namespace CRMTelmate
     /// </summary>
     public partial class App : Application
     {
+        public static Entities.TelmateEntities Context { get; } = new Entities.TelmateEntities();
+        public static Entities.User CurrentUser = null;
     }
 }

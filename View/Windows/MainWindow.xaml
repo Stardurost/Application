@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMTelmate.View.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="1000" Height="650" Width="600" WindowStartupLocation="CenterScreen" Background="{StaticResource GrayscaleSecondary}" Icon="/CRMTelmate;component/Resources/logo.ico">
+        Title="CRMTelmate" MinHeight="450" MinWidth="1000" Height="650" Width="600" WindowStartupLocation="CenterScreen" Background="{StaticResource GrayscaleSecondary}" Icon="/CRMTelmate;component/Resources/logo.ico">
     <Grid>
         <!--задаю меню и правую часть экрана под хедер и фрейм-->
         <Grid.ColumnDefinitions>
@@ -27,17 +27,18 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/CRMTelmate;component/Resources/logo.png"/>
-                    <TextBlock Style="{StaticResource H2}" Foreground="{StaticResource PrimaryColor}" Text="CRMTelmate" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
+                    <TextBlock Style="{StaticResource H2}" Foreground="{StaticResource PrimaryColor}" Text="Telmate" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
                 </StackPanel>                
             </Grid>
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
 
                 <Button  Style="{StaticResource MenuButton}" Content="Клиенты" Name="BtnClients" Click="BtnClients_Click"/>
-                <Button  Style="{StaticResource MenuButton}" Content="Услуги" Name="BtnServices"/>
+                <Button  Style="{StaticResource MenuButton}" Content="Услуги" Name="BtnServices" Click="BtnServices_Click"/>
                 <Button  Style="{StaticResource MenuButton}" Content="Статистика" Name="BtnStatistics"/>
             </StackPanel>
 
-            <Button Grid.Row="2"  Style="{StaticResource MenuButton}" Content="Выход" VerticalAlignment="Bottom" Name="BtnBack" Click="BtnBack_Click"/>
+            <Button Grid.Row="2"  Style="{StaticResource MenuButton}" Content="Назад" VerticalAlignment="Center" Name="BtnBack" Click="BtnBack_Click"/>
+            <Button Grid.Row="2"  Style="{StaticResource MenuButton}" Content="Выход" VerticalAlignment="Bottom" Name="BtnExit" Click="BtnExit_Click"/>
 
         </Grid>
         <Grid Grid.Column="1">
