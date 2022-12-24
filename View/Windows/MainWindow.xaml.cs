@@ -26,6 +26,11 @@ namespace CRMTelmate.View.Windows
             FrameMain.Navigate(new Pages.ClientPage());
         }
 
+        private void BtnClients_Click(object sender, RoutedEventArgs e)
+        {
+            FrameMain.Navigate(new Pages.ClientInfoPage());
+        }
+
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (FrameMain.CanGoBack)
@@ -34,9 +39,16 @@ namespace CRMTelmate.View.Windows
             }
         }
 
-        private void BtnClients_Click(object sender, RoutedEventArgs e)
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            FrameMain.Navigate(new Pages.ClientInfoPage());
+            Authorization Authorization = new Authorization();
+            this.Close();
+            Authorization.Show();
+        }
+
+        private void BtnServices_Click(object sender, RoutedEventArgs e)
+        {
+            FrameMain.Navigate(new Pages.ServicePage());
         }
     }
 }

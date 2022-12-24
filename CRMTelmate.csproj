@@ -103,6 +103,9 @@
     <Compile Include="View\Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\ServicePage.xaml.cs">
+      <DependentUpon>ServicePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\ClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ServicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +199,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\picture.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
