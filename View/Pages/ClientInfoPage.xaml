@@ -27,7 +27,7 @@
                 </ComboBox>
             </StackPanel>
             <!--сам список услуг в листвью. я его не вижу тк не подключена бд если некрасиво - потом исправлю-->
-            <ListView Grid.Row="2" Name="LViewProduct"
+            <ListView Grid.Row="2" Name="LViewClient"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
 
                 <ListView.ItemTemplate>

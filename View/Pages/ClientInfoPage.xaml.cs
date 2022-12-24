@@ -20,9 +20,10 @@ namespace CRMTelmate.View.Pages
     /// </summary>
     public partial class ClientInfoPage : Page
     {
-        public ClientInfoPage()
+        public ClientInfoPage(Entities.Client client)
         {
             InitializeComponent();
+            LViewClient.ItemsSource = new List<Entities.Client>() { client };
         }
 
         private void BtnEditSrvc_Click(object sender, RoutedEventArgs e)
@@ -39,10 +40,5 @@ namespace CRMTelmate.View.Pages
         {
 
         }
-
-        //открытие страницы определенного клиента 
-        //public ClientInfoPage(Entities.Client client)
-        //{
-        //}
     }
 }
