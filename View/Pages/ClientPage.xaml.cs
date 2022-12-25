@@ -22,6 +22,7 @@ namespace CRMTelmate.View.Pages
     public partial class ClientPage : Page
     {
         public static CultureInfo cultureInfoRu = CultureInfo.GetCultureInfo("ru-RU");
+
         static List<string> SortOptions = new List<string>()
         {
             "По умолчанию",

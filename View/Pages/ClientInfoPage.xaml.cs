@@ -38,7 +38,16 @@ namespace CRMTelmate.View.Pages
 
         private void InitializeServicesList()
         {
-            //LViewServices.ItemsSource = ;
+            UpdateServicesList();
+        }
+
+        private void UpdateServicesList()
+        {
+            _client = App.Context.Clients
+                .Where(c => c.IDClient == _client.IDClient)
+                .FirstOrDefault();
+            LViewServices.ItemsSource = null;
+            LViewServices.ItemsSource = _client.ClientServices;
         }
 
         private void InitializeClientInfo()
@@ -52,6 +61,11 @@ namespace CRMTelmate.View.Pages
         }
 
         private void InitializeCostStats()
+        {
+            UpdateCostStats();
+        }
+
+        private void UpdateCostStats()
         {
             var sixMonthAgo = DateTime.Today;
             if (sixMonthAgo.Month <= 5)
@@ -109,14 +123,16 @@ namespace CRMTelmate.View.Pages
             costByMonthSeries.ItemsSource = itemsSource;
         }
 
-        private void BtnEditSrvc_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void BtnDeleteSrvc_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var currentClientService = button.DataContext as Entities.ClientService;
 
+            App.Context.ClientServices.Remove(currentClientService);
+            App.Context.SaveChanges();
+
+            UpdateServicesList();
+            UpdateCostStats();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)

@@ -43,19 +43,17 @@
                             <TextBlock 
                                 Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                 HorizontalAlignment="Left"
-                                Text="{Binding ServiceName}"/>
+                                Text="{Binding Service.NameService}"
+                            />
 
                             <TextBlock Grid.Row="1"
                                 Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                 HorizontalAlignment="Left"
-                                Text="{Binding ServiceDescription}"/>
+                                Text="{Binding Service.CostFormatted}"
+                            />
 
-                            <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
-                                <Button Content="Редактировать" Name="BtnEditSrvc"
-                                        Click="BtnEditSrvc_Click" Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
-
-                                <Button Content="Удалить" Name="BtnDeleteSrvc" Click="BtnDeleteSrvc_Click" 
-                                        Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                <Button Content="Удалить" Name="BtnDeleteSrvc" Click="BtnDeleteSrvc_Click" Style="{StaticResource ActionButton}"/>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
@@ -120,7 +118,8 @@
                     Content="Сохранить"
                     Name="BtnSave" 
                     VerticalAlignment="Bottom"
-                    Click="BtnSave_Click"/>
+                    Click="BtnSave_Click"
+                />
             </Grid>
         </Grid>
 
