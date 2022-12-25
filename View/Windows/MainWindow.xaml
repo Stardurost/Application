@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMTelmate.View.Windows"
         mc:Ignorable="d"
-        Title="CRMTelmate" MinHeight="450" MinWidth="1000" Height="650" Width="600" WindowStartupLocation="CenterScreen" Background="{StaticResource GrayscaleSecondary}" Icon="/CRMTelmate;component/Resources/logo.ico">
+        Title="CRMTelmate" MinHeight="650" MinWidth="1000" Height="650" Width="600" WindowStartupLocation="CenterScreen" Background="{StaticResource GrayscaleSecondary}" Icon="/CRMTelmate;component/Resources/logo.ico">
     <Grid>
         <!--задаю меню и правую часть экрана под хедер и фрейм-->
         <Grid.ColumnDefinitions>
