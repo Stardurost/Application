@@ -64,15 +64,15 @@
 
                                 <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                     HorizontalAlignment="Left"
-                                    Text="{Binding NameService}"/>
+                                    Text="{Binding NameService}" Style="{StaticResource H5}"/>
 
                                 <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                     HorizontalAlignment="Left"
-                                    Text="{Binding Description}"/>
+                                    Text="{Binding Description}" Style="{StaticResource H5}"/>
 
                                 <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                     HorizontalAlignment="Left"
-                                    Text="{Binding Cost}"/>
+                                    Text="{Binding Cost}" Style="{StaticResource H5}"/>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
                                     <Button Style="{StaticResource ActionButton}" Content="Редактировать" Name="BtnEdit"
