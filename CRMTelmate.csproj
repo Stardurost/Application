@@ -172,13 +172,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Fonts\Rostelecom Basis Font\RostelecomBasis-Bold.otf" />
+    <Resource Include="Fonts\Rostelecom Basis Font\RostelecomBasis-Light.otf" />
+    <Resource Include="Fonts\Rostelecom Basis Font\RostelecomBasis-Medium.otf" />
+    <Resource Include="Fonts\Rostelecom Basis Font\RostelecomBasis-Regular.otf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\logo.ico" />
   </ItemGroup>
