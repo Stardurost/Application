@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,18 +21,19 @@ namespace CRMTelmate.View.Pages
     /// </summary>
     public partial class ClientPage : Page
     {
+        public static CultureInfo cultureInfoRu = CultureInfo.GetCultureInfo("ru-RU");
         static List<string> SortOptions = new List<string>()
         {
             "По умолчанию",
-            "По возрастанию даты регистрации",
-            "По убыванию даты регистрации"
+            "Сначала старые клиенты",
+            "Сначала новые клиенты"
         };
         static List<string> FilterOptions = new List<string>()
         {
             "По умолчанию",
-            "Сумма трат от 1000руб.",
-            "Сумма трат от 5000руб.",
-            "Сумма трат от 10000руб."
+            $"Сумма трат от {(1000).ToString("C", cultureInfoRu)}",
+            $"Сумма трат от {(5000).ToString("C", cultureInfoRu)}",
+            $"Сумма трат от {(10000).ToString("C", cultureInfoRu)}"
         };
 
         public ClientPage()
