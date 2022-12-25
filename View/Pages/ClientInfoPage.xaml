@@ -22,13 +22,31 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1.25*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <TextBlock Style="{StaticResource H2}" Text="Услуги клиента"/>
-                <!--TODO добавление новой услуги-->
-                <ComboBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" MinWidth="70" />
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource H2}" Text="Услуги клиента"/>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140px" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Добавить новую услугу" VerticalAlignment="Center" Margin="0, 0, 10, 0" />
+                        <ComboBox HorizontalAlignment="Stretch" Grid.Column="1" x:Name="CBAddClientService" HorizontalContentAlignment="Stretch" MinWidth="120" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <DatePicker HorizontalAlignment="Left" x:Name="DPClientServiceStartTime" Width="150" Height="24" />
+                        <Button HorizontalAlignment="Right" MaxWidth="100" Grid.Column="1" Click="BtnAddClientService_Click" Content="Добавить" Style="{StaticResource ActionButton}"/>
+                    </Grid>
+                </StackPanel>
             </StackPanel>
             <ListView Grid.Row="2" Name="LViewServices" Margin="0">
                 <ListView.ItemTemplate>
@@ -60,7 +78,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-
 
         <!--инфа о клиенте-->
         <Grid Grid.Column="1">

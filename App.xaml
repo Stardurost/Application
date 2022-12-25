@@ -11,11 +11,9 @@
         <SolidColorBrush x:Key="AccentLighterColor" Color="#FF5E2D"/>
         <SolidColorBrush x:Key="PrimaryLighterColor" Color="#9466FF"/>
 
-
         <SolidColorBrush x:Key="GrayscaleSecondary" Color="#F4F4F5"/>
         <SolidColorBrush x:Key="GrayscalePrimary" Color="white"/>
         <SolidColorBrush x:Key="GrayscaleAccent" Color="#D3D4DB"/>
-
 
         <!--пыталась подключить фонт по какойто причине вс на это все равно
         если вы сможете это починить то супер, если нет - уберем-->
@@ -43,7 +41,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="FontSize" Value="22"/>
-            
         </Style>
 
         <Style TargetType="TextBlock" x:Key="H3">

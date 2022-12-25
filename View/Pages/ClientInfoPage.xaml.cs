@@ -32,6 +32,7 @@ namespace CRMTelmate.View.Pages
             _client = client;
 
             InitializeServicesList();
+            InitializeCBAddServices();
             InitializeClientInfo();
             InitializeCostStats();
         }
@@ -39,6 +40,14 @@ namespace CRMTelmate.View.Pages
         private void InitializeServicesList()
         {
             UpdateServicesList();
+        }
+
+        private void InitializeCBAddServices()
+        {
+            var itemsSource = App.Context.Services.ToList()
+                .Select(s => s.NameService);
+            CBAddClientService.ItemsSource = itemsSource;
+            CBAddClientService.SelectedIndex = 0;
         }
 
         private void UpdateServicesList()
@@ -141,7 +150,7 @@ namespace CRMTelmate.View.Pages
             if (date == null)
             {
                 MessageBox.Show(
-                    "Дата регистрации является обязательным параметром",
+                    "Дата регистрации является обязательным параметром. Пожалуйста, заполните это поле",
                     "Ошибка",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
@@ -164,6 +173,38 @@ namespace CRMTelmate.View.Pages
                 MessageBoxButton.OK,
                 MessageBoxImage.Information
             );
+        }
+
+        private void BtnAddClientService_Click(object sender, RoutedEventArgs e)
+        {
+            if (DPClientServiceStartTime.SelectedDate == null)
+            {
+                MessageBox.Show(
+                    "Дата оформления услуги является обязательным параметром. Пожалуйста, заполните это поле",
+                    "Ошибка",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+                return;
+            }
+
+            var serviceNameSelected = CBAddClientService.SelectedItem as string;
+            var serviceSelected = App.Context.Services.ToList()
+                .Where(s => s.NameService == serviceNameSelected)
+                .FirstOrDefault();
+            var clientServiceCreated = App.Context.ClientServices.Create();
+
+            clientServiceCreated.IDcs = App.Context.ClientServices.ToList()
+                .Last().IDcs + 1;
+            clientServiceCreated.IDClient = _client.IDClient;
+            clientServiceCreated.IDService = serviceSelected.IDService;
+            clientServiceCreated.StartTime = (DateTime) DPClientServiceStartTime.SelectedDate;
+
+            App.Context.ClientServices.Add(clientServiceCreated);
+            App.Context.SaveChanges();
+
+            UpdateServicesList();
+            UpdateCostStats();
         }
     }
 }
