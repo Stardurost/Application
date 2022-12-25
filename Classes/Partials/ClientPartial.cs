@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,6 +11,8 @@ namespace CRMTelmate.Entities
 {
     partial class Client
     {
+        public static CultureInfo cultureInfoRu = CultureInfo.GetCultureInfo("ru-RU");
+
         public byte[] Avatar
         {
             get
@@ -39,11 +42,29 @@ namespace CRMTelmate.Entities
             }
         }
 
+        public string RegistrationDateFormatted
+        {
+            get
+            {
+                var dateFormatted = RegistrationDate.ToString("D", cultureInfoRu);
+
+                return $"Дата регистрации: {dateFormatted}";
+            }
+        }
+
         public decimal CostSum
         {
             get
             {
                 return ClientServices.Sum(cs => cs.Service.Cost);
+            }
+        }
+
+        public string CostSumFormatted
+        {
+            get
+            {
+                return $"Сумма трат: {CostSum.ToString("C", cultureInfoRu)}";
             }
         }
     }

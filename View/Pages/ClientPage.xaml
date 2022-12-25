@@ -58,7 +58,11 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <TextBlock Margin="10, 0, 0, 0" TextWrapping="WrapWithOverflow" Width="230" Text="{Binding FullName}"/>
+                                <StackPanel Margin="5, 0, 0, 0">
+                                    <TextBlock TextWrapping="WrapWithOverflow" Width="230" Text="{Binding FullName}"/>
+                                    <TextBlock TextWrapping="WrapWithOverflow" Width="230" Text="{Binding RegistrationDateFormatted}"/>
+                                    <TextBlock TextWrapping="WrapWithOverflow" Width="230" Text="{Binding CostSumFormatted}"/>
+                                </StackPanel>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                                     <Button Style="{StaticResource ActionButton}" Content="Редактировать" Name="BtnEdit"
