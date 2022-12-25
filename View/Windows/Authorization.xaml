@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Авторизация" Height="500" Width="350"
         WindowStartupLocation="CenterScreen"
-        Icon="/CRMTelmate;component/Resources/logo.ico" ResizeMode="NoResize">
+        Icon="/CRMTelmate;component/Resources/logo.ico" ResizeMode="NoResize" TouchEnter="Window_TouchEnter">
     <Grid>
         <StackPanel Margin="40" VerticalAlignment="Stretch">
             <Image Source="/CRMTelmate;component/Resources/logo.png" Height="100" Margin="0 0 0 50"/>

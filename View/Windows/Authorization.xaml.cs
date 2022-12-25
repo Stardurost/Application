@@ -30,5 +30,24 @@ namespace CRMTelmate.View.Windows
             this.Close();
             MainWindow.Show();
         }
+
+        private void Window_TouchEnter(object sender, TouchEventArgs e)
+        {
+            var currentUser = App.Context.Users
+                .FirstOrDefault(p => p.UserLogin == TextBoxLogin.Text
+                && p.UserPassword == PswdBoxLogin.Password);
+            if (currentUser != null)
+            {
+                App.CurrentUser = currentUser;
+                MainWindow MainWindow = new MainWindow();
+                this.Close();
+                MainWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль!!!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

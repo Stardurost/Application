@@ -36,15 +36,13 @@
         </Grid>
 
         <ListView Grid.Row="1" Name="LViewClients"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0" >
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
-            <!--этот код мне не видно, подредачу когда будет бд /маша
-            переменные в биндинге тоже связаны с бд и должны быть названы как элементы в бд-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="{StaticResource AccentColor}">

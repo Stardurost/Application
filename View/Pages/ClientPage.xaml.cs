@@ -27,7 +27,24 @@ namespace CRMTelmate.View.Pages
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var currentClient = button.DataContext as Entities.Client;
 
+            var result = MessageBox.Show(
+                $"После удаления клиент будет больше недоступен. Удалить клиента {currentClient.FullName}?",
+                "Подтверждение удаления",
+                MessageBoxButton.OKCancel,
+                MessageBoxImage.Question
+            );
+
+            if (result == MessageBoxResult.OK)
+            {
+                App.Context.Clients.Remove(currentClient);
+
+                App.Context.SaveChanges();
+
+                ComputeClients();
+            }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
