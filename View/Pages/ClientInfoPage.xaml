@@ -6,7 +6,7 @@
       xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
       xmlns:local="clr-namespace:CRMTelmate.View.Pages"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="Клиент" Background="{StaticResource GrayscalePrimary}" Height="650">
+      Title="Клиент" Background="{StaticResource GrayscalePrimary}" Height="580">
     <Grid Margin="10, 0, 10, 10" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -24,45 +24,40 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Style="{StaticResource H2}" Text="Услуги клиента"/>
                 <!--TODO добавление новой услуги-->
                 <ComboBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" MinWidth="70" />
             </StackPanel>
-            <!--сам список услуг в листвью. я его не вижу тк не подключена бд если некрасиво - потом исправлю-->
-            <ListView Grid.Row="2" Name="LViewClient"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
-
+            <ListView Grid.Row="2" Name="LViewServices" Margin="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                                <TextBlock 
-                                    Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                    HorizontalAlignment="Left"
-                                    Text="{Binding ServiceName}"/>
+                            <TextBlock 
+                                Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                HorizontalAlignment="Left"
+                                Text="{Binding ServiceName}"/>
 
-                                <TextBlock Grid.Row="1"
-                                    Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                    HorizontalAlignment="Left"
-                                    Text="{Binding ServiceDescription}"/>
+                            <TextBlock Grid.Row="1"
+                                Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                HorizontalAlignment="Left"
+                                Text="{Binding ServiceDescription}"/>
 
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
-                                    <Button Content="Редактировать" Name="BtnEditSrvc"
-                                            Click="BtnEditSrvc_Click" Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
+                                <Button Content="Редактировать" Name="BtnEditSrvc"
+                                        Click="BtnEditSrvc_Click" Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
 
-                                    <Button Content="Удалить" Name="BtnDeleteSrvc" Click="BtnDeleteSrvc_Click" 
-                                            Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
-                                </StackPanel>
-
-                            </Grid>
-                        </Border>
+                                <Button Content="Удалить" Name="BtnDeleteSrvc" Click="BtnDeleteSrvc_Click" 
+                                        Visibility="{Binding AdminControlVisibility}" Style="{StaticResource ActionButton}"/>
+                            </StackPanel>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -70,51 +65,68 @@
 
 
         <!--инфа о клиенте-->
-        <StackPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource H2}" Text="Клиент"/>
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock Style="{StaticResource H4}" Text="Имя*"></TextBlock>
-                <TextBox MaxLength="100"></TextBox>
-            </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
 
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock Style="{StaticResource H4}" Text="Фамилия*"></TextBlock>
-                <TextBox MaxLength="100"></TextBox>
-            </StackPanel>
+            <TextBlock Style="{StaticResource H2}" Text="Клиент" HorizontalAlignment="Left"/>
 
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock Style="{StaticResource H4}" Text="Отчество"></TextBlock>
-                <TextBox MaxLength="100"></TextBox>
-            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock Style="{StaticResource H4}" Text="Телефон*"></TextBlock>
-                <TextBox MaxLength="100" ></TextBox>
-            </StackPanel>
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock Text="e-mail*" Style="{StaticResource H4}"></TextBlock>
-                <TextBox MaxLength="100"></TextBox>
-            </StackPanel>
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock TextWrapping="WrapWithOverflow" Text="Дата регистрации*" TextAlignment="Right" MaxWidth="100" Style="{StaticResource H4}"></TextBlock>
-                <TextBox MaxLength="100"></TextBox>
-            </StackPanel>
-            <StackPanel Style="{StaticResource ClientInfo}">
-                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Right"  Text="Дата рождения*" MaxWidth="100" Style="{StaticResource H4}"></TextBlock>
-                <TextBox MaxLength="100"></TextBox>
-            </StackPanel>
+                <StackPanel Style="{StaticResource ClientInfo}">
+                    <TextBlock Style="{StaticResource H4}" Text="Имя*"></TextBlock>
+                    <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="50" x:Name="TBFirstName" />
+                </StackPanel>
 
-            <CheckBox Content="клиент не пользуется услугами" Style="{StaticResource CheckBoxClientService}"/>
+                <StackPanel Grid.Row="1" Style="{StaticResource ClientInfo}">
+                    <TextBlock Style="{StaticResource H4}" Text="Фамилия*"></TextBlock>
+                    <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="50" x:Name="TBSurnameName" />
+                </StackPanel>
 
-            <Button Style="{StaticResource ActionButton}" Height="30" Width="200" Margin="5"
-                        Content="Сохранить"
-                        Name="BtnSave" 
-                        Click="BtnSave_Click"/>
-        </StackPanel>
+                <StackPanel Grid.Row="2" Style="{StaticResource ClientInfo}">
+                    <TextBlock Style="{StaticResource H4}" Text="Отчество"></TextBlock>
+                    <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="50" x:Name="TBPatronumicName" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Style="{StaticResource ClientInfo}">
+                    <TextBlock Text="e-mail*" Style="{StaticResource H4}"></TextBlock>
+                    <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="255" x:Name="TBEmail" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource ClientInfo}">
+                    <TextBlock TextWrapping="WrapWithOverflow" Text="Дата регистрации*" TextAlignment="Right" MaxWidth="86" Style="{StaticResource H4}"></TextBlock>
+                    <DatePicker x:Name="DPRegistrationDate" Width="90" Height="24" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="2" Style="{StaticResource ClientInfo}">
+                    <TextBlock Style="{StaticResource H4}" Text="Телефон*"></TextBlock>
+                    <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="20" x:Name="TBPhone" />
+                </StackPanel>
+
+                <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource ActionButton}" Height="30" Margin="5, 0"
+                    Content="Сохранить"
+                    Name="BtnSave" 
+                    VerticalAlignment="Bottom"
+                    Click="BtnSave_Click"/>
+            </Grid>
+        </Grid>
 
         <!--статистика трат-->
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <chartingToolkit:Chart BorderThickness="0" Title="Статистика трат за последние 6 месяцев" Name="CostStats" Margin="10">
+            <chartingToolkit:Chart BorderThickness="0" Title="Статистика трат за последние 6 месяцев" Name="CostStats">
                 <chartingToolkit:Chart.Series>
                     <chartingToolkit:AreaSeries
                         Title="Траты по месяцам" 

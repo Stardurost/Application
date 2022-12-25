@@ -31,9 +31,24 @@ namespace CRMTelmate.View.Pages
 
             _client = client;
 
+            InitializeServicesList();
+            InitializeClientInfo();
             InitializeCostStats();
+        }
 
-            LViewClient.ItemsSource = new List<Entities.Client>() { client };
+        private void InitializeServicesList()
+        {
+            //LViewServices.ItemsSource = ;
+        }
+
+        private void InitializeClientInfo()
+        {
+            TBFirstName.Text = _client.NameClient;
+            TBSurnameName.Text = _client.SurnameClient;
+            TBPatronumicName.Text = _client.PatronumicClient;
+            TBEmail.Text = _client.EmailClient;
+            DPRegistrationDate.SelectedDate = _client.RegistrationDate;
+            TBPhone.Text = _client.ProneClient;
         }
 
         private void InitializeCostStats()
@@ -106,7 +121,33 @@ namespace CRMTelmate.View.Pages
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            var date = DPRegistrationDate.SelectedDate;
+            if (date == null)
+            {
+                MessageBox.Show(
+                    "Дата регистрации является обязательным параметром",
+                    "Ошибка",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+                return;
+            }
 
+            _client.NameClient = TBFirstName.Text;
+            _client.SurnameClient = TBSurnameName.Text;
+            _client.PatronumicClient = TBPatronumicName.Text;
+            _client.EmailClient = TBEmail.Text;
+            _client.RegistrationDate = (DateTime) date;
+            _client.ProneClient = TBPhone.Text;
+
+            App.Context.SaveChanges();
+
+            MessageBox.Show(
+                "Данные успешно сохранены",
+                "Данные сохранены",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
     }
 }

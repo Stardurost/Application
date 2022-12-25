@@ -61,7 +61,7 @@
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="12"/>
         </Style>
 
         <!--стиль для кнопок действия-->
@@ -136,13 +136,21 @@
         <Style TargetType="StackPanel" x:Key="ClientInfo">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="2 5 35 2"/>
+            <Setter Property="MaxWidth" Value="196" />
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="ClientInfoTB">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="90" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
         <Style TargetType="CheckBox" x:Key="CheckBoxClientService">
             <Setter Property="Background" Value="{StaticResource AccentColor}"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="5, 0"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
         
