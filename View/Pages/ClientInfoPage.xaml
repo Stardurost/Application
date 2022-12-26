@@ -34,7 +34,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Добавить новую услугу" VerticalAlignment="Center" Margin="0, 0, 10, 0" />
+                        <TextBlock Style="{StaticResource H5}" Text="Добавить новую услугу" VerticalAlignment="Center" Margin="0, 0, 10, 0" />
                         <ComboBox HorizontalAlignment="Stretch" Grid.Column="1" x:Name="CBAddClientService" HorizontalContentAlignment="Stretch" MinWidth="120" />
                     </Grid>
                     <Grid>

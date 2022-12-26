@@ -12,7 +12,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
-            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -23,8 +22,8 @@
             </Grid.ColumnDefinitions>
 
             <!--комбо боксы и серчбар-->
-            <ComboBox BorderBrush="#FFFF4F12" Name="SortCB" SelectionChanged="SortCB_SelectionChanged" />
-            <ComboBox Grid.Column="1" Name ="FilterCB" SelectionChanged="FilterCB_SelectionChanged" />
+            <ComboBox BorderBrush="#FFFF4F12"/>
+            <ComboBox Grid.Column="1"/>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -35,7 +34,7 @@
             </Grid>
 
         </Grid>
-        <TextBlock  Grid.Row="1"  Text="Услуги не найдены" Style="{StaticResource H2}" VerticalAlignment="Top"/>
+
         <ListView Grid.Row="1" Name="LViewService"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
             <ListView.ItemsPanel>
@@ -65,17 +64,21 @@
 
                                 <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                     HorizontalAlignment="Left"
-                                    Text="{Binding NameService}"/>
+                                    Text="{Binding NameService}" Style="{StaticResource H5}"/>
+
+                                <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding Description}" Style="{StaticResource H5}"/>
 
                                 <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                     HorizontalAlignment="Left"
-                                    Text="{Binding CostFormatted}"/>
+                                    Text="{Binding Cost}" Style="{StaticResource H5}"/>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
-                                    <Button Style="{StaticResource ActionButton}" Content="Открыть" Name="BtnEdit" Click="BtnEdit_Click"
+                                    <Button Style="{StaticResource ActionButton}" Content="Редактировать" Name="BtnEdit"
                                              Visibility="{Binding AdminControlVisibility}"/>
 
-                                    <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete"  Click="BtnDelete_Click"
+                                    <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete" 
                                             Visibility="{Binding AdminControlVisibility}"/>
                                 </StackPanel>
 
@@ -86,9 +89,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Row="2">
-            <Button Name="AddNew" Style="{StaticResource ActionButton}" Width="250" Content="Создать новую услугу" Click="AddNew_Click"/>
-        </Grid>
+
 
     </Grid>
 </Page>
