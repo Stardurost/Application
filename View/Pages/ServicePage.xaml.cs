@@ -169,6 +169,7 @@ namespace CRMTelmate.View.Pages
         private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateServices();
+            ComputeService();
         }
 
         private void Sort_SelectionChanged(object sender, SelectionChangedEventArgs e)
