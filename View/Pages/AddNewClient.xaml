@@ -44,7 +44,7 @@
                     <Image Name="ImageService">
                     </Image>
                 </Border>
-                <Button Style="{StaticResource ServiceButton}" Height="30" Width="200" Margin="5" Name="BtnSelectImage"  Content="Выбрать" Click="BtnSelectImage_Click"></Button>
+                <Button Style="{StaticResource MenuButton}" Height="30" Width="200" Margin="5" Name="BtnSelectImage"  Content="Выбрать" Click="BtnSelectImage_Click"></Button>
 
             </StackPanel>
 
