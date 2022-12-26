@@ -46,7 +46,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Style="{StaticResource H1}" HorizontalAlignment="Stretch" Text="{Binding ElementName=FrameMain, Path=Content.Title}"/>
-            
+            <TextBlock Name="UserName" HorizontalAlignment="Right" Width="200" Style="{StaticResource H4}" Margin="10,0,0,0"/>
             <Frame Grid.Row="1" Background="{StaticResource GrayscalePrimary}" Name="FrameMain" NavigationUIVisibility="Hidden" BorderBrush="{StaticResource GrayscalePrimary}">
             </Frame>
         </Grid>

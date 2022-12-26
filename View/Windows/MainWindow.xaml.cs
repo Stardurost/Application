@@ -24,6 +24,7 @@ namespace CRMTelmate.View.Windows
         {
             InitializeComponent();
             FrameMain.Navigate(new Pages.ClientPage());
+            UserName.Text = App.CurrentUser.SurnameUser.ToString() +"\n"+ App.CurrentUser.NameUser.ToString() +"\n"+ App.CurrentUser.PatronumicUser.ToString();
         }
 
         private void BtnClients_Click(object sender, RoutedEventArgs e)

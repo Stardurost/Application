@@ -9,7 +9,7 @@ d:DesignHeight="450" d:DesignWidth="800"
 Title="Добавление нового клиента">
 <Grid Grid.Column="1">
 <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="700">
-<TextBlock Style="{StaticResource H2}" Text="Услуга"/>
+<TextBlock Style="{StaticResource H2}" Text="Клиент"/>
 <StackPanel HorizontalAlignment="Center" Width="200">
 <StackPanel Style="{StaticResource ClientInfo}" HorizontalAlignment="Left">
 <TextBlock Style="{StaticResource H4}" Text="Имя*" Width="70"></TextBlock>

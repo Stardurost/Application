@@ -67,13 +67,9 @@
                                     HorizontalAlignment="Left"
                                     Text="{Binding NameService}" Style="{StaticResource H5}"/>
 
-                                <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                    HorizontalAlignment="Left"
-                                    Text="{Binding Description}"/>
-
                                 <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
                                     HorizontalAlignment="Left"
-                                    Text="{Binding Cost}"/>
+                                    Text="{Binding CostFormatted}"/>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
                                     <Button Style="{StaticResource ActionButton}" Content="Открыть" Name="BtnEdit" Click="BtnEdit_Click"

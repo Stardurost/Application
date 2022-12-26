@@ -192,7 +192,7 @@ namespace CRMTelmate.View.Pages
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var currentService = (sender as Button).DataContext as Entities.Service;
-            if (MessageBox.Show($"Вы уверены, что хотите удалить товар: {currentService.NameService}?",
+            if (MessageBox.Show($"Вы уверены, что хотите удалить услугу: {currentService.NameService}?",
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 DeleteItem(currentService);
