@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CRMTelmate.Entities;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using File = System.IO.File;
 
 namespace CRMTelmate.View.Pages
 {
@@ -24,7 +27,8 @@ namespace CRMTelmate.View.Pages
     {
         public static CultureInfo cultureInfoRu = CultureInfo.GetCultureInfo("ru-RU");
         private Entities.Client _client;
-
+        List<Entities.Service> clientsUnFiltered = new List<Entities.Service>();
+        private byte[] _mainImageData = null;
         public ClientInfoPage(Entities.Client client)
         {
             InitializeComponent();
@@ -32,31 +36,71 @@ namespace CRMTelmate.View.Pages
             _client = client;
 
             InitializeServicesList();
-            InitializeCBAddServices();
             InitializeClientInfo();
             InitializeCostStats();
+            UpdateServicesList();
+            initalizeImage();
         }
-
+        private void initalizeImage()
+        {
+            _mainImageData = _client.Image;
+            ImageService.Source = new ImageSourceConverter()
+                .ConvertFrom(_client.Image) as ImageSource;
+        }
         private void InitializeServicesList()
         {
             UpdateServicesList();
         }
 
-        private void InitializeCBAddServices()
+        private void UpdateServicesList()
         {
-            var itemsSource = App.Context.Services.ToList()
+            var services = App.Context.Services.ToList();
+            services = Filter(services);
+
+            LViewServices.ItemsSource = null;
+            LViewServices.ItemsSource = services;
+            var itemsSource = clientsUnFiltered.ToList()
                 .Select(s => s.NameService);
             CBAddClientService.ItemsSource = itemsSource;
             CBAddClientService.SelectedIndex = 0;
         }
-
-        private void UpdateServicesList()
+        private List<Entities.Service> Filter(List<Entities.Service> services)
         {
-            _client = App.Context.Clients
-                .Where(c => c.IDClient == _client.IDClient)
-                .FirstOrDefault();
-            LViewServices.ItemsSource = null;
-            LViewServices.ItemsSource = _client.ClientServices;
+            List<Entities.Service> clientsFiltered = new List<Entities.Service>();
+            List<Entities.ClientService> clientService;
+            clientService = App.Context.ClientServices.ToList();
+            clientService = clientService.Where(p => p.IDClient.ToString() == _client.IDClient.ToString())
+                        .ToList();
+            int[] IDServices = new int[clientService.Count];
+            int index = 0;
+            foreach (var client in clientService)
+            {
+                IDServices[index] = client.IDService;
+                index++;
+            }
+            foreach (var service in services)
+            {
+                if (InArray(service.IDService, IDServices)) clientsFiltered.Add(service);
+            }
+            clientsUnFiltered.Clear();
+            foreach (var service in services)
+            {
+                if (!InArray(service.IDService, IDServices)) clientsUnFiltered.Add(service);
+            }
+
+            return clientsFiltered;
+        }
+        private bool InArray(int Id, int[] Arr)
+        {
+            bool result = false;
+            foreach (var item in Arr)
+            {
+                if (item == Id)
+                {
+                    return true;
+                }
+            }
+            return result;
         }
 
         private void InitializeClientInfo()
@@ -135,7 +179,9 @@ namespace CRMTelmate.View.Pages
         private void BtnDeleteSrvc_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var currentClientService = button.DataContext as Entities.ClientService;
+            var currentIDService = ((CRMTelmate.Entities.Service)button.DataContext).IDService;
+
+            var currentClientService = App.Context.ClientServices.Where(p => p.IDService == currentIDService && p.IDClient == _client.IDClient).FirstOrDefault();
 
             App.Context.ClientServices.Remove(currentClientService);
             App.Context.SaveChanges();
@@ -164,7 +210,7 @@ namespace CRMTelmate.View.Pages
             _client.EmailClient = TBEmail.Text;
             _client.RegistrationDate = (DateTime) date;
             _client.ProneClient = TBPhone.Text;
-
+            _client.Image = _mainImageData;
             App.Context.SaveChanges();
 
             MessageBox.Show(
@@ -205,6 +251,18 @@ namespace CRMTelmate.View.Pages
 
             UpdateServicesList();
             UpdateCostStats();
+        }
+
+        private void BtnSelectImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image | *.png; *.jpg; *.jpeg";
+            if (ofd.ShowDialog() == true)
+            {
+                _mainImageData = File.ReadAllBytes(ofd.FileName);
+                ImageService.Source = new ImageSourceConverter()
+                    .ConvertFrom(_mainImageData) as ImageSource;
+            }
         }
     }
 }

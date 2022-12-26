@@ -69,7 +69,11 @@ namespace CRMTelmate.View.Pages
             var clientsSorted = Sort(clients);
             var clientsFiltered = Filter(clientsSorted);
             var clientsSearched = Search(clientsFiltered);
-
+            if (clientsSearched.Count == 0)
+            { LViewClients.Visibility = Visibility.Hidden; }
+            else {
+                LViewClients.Visibility = Visibility.Visible;
+            }
             LViewClients.ItemsSource = clientsSearched;
         }
 
@@ -185,6 +189,11 @@ namespace CRMTelmate.View.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ComputeClients();
+        }
+
+        private void AddNew_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddNewClient());
         }
     }
 }

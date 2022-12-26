@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -32,7 +33,7 @@
                 <TextBox Grid.Column="1" x:Name="TBSearch" TextChanged="TBSearch_TextChanged"/>
             </Grid>
         </Grid>
-
+        <TextBlock  Grid.Row="1"  Text="Услуги не найдены" Style="{StaticResource H2}" VerticalAlignment="Top"/>
         <ListView Grid.Row="1" Name="LViewClients"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
             <ListView.ItemsPanel>
@@ -65,7 +66,7 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal">
-                                    <Button Style="{StaticResource ActionButton}" Content="Редактировать" Name="BtnEdit"
+                                    <Button Style="{StaticResource ActionButton}" Content="Открыть" Name="BtnEdit"
                                             Click="BtnEdit_Click"/>
 
                                     <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDelete" Click="BtnDelete_Click" />
@@ -76,5 +77,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Grid Grid.Row="2">
+            <Button Name="AddNew" Style="{StaticResource ActionButton}" Width="250" Content="Создать нового клиента" Click="AddNew_Click"/>
+        </Grid>
     </Grid>
+  
 </Page>

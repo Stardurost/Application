@@ -48,32 +48,40 @@
                     </Grid>
                 </StackPanel>
             </StackPanel>
-            <ListView Grid.Row="2" Name="LViewServices" Margin="0">
-                <ListView.ItemTemplate>
+            <ListView Grid.Row="2" Name="LViewServices" Margin="0" >
+                <ListView.ItemTemplate >
                     <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                        <Border BorderBrush="{StaticResource AccentColor}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="150*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Image}"/>
 
-                            <TextBlock 
-                                Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                HorizontalAlignment="Left"
-                                Text="{Binding Service.NameService}"
-                            />
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="1"
-                                Style="{StaticResource H4}" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
-                                HorizontalAlignment="Left"
-                                Text="{Binding Service.CostFormatted}"
-                            />
+                                    <TextBlock TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding NameService}"/>
 
-                            <StackPanel Grid.Row="2" Orientation="Horizontal">
-                                <Button Content="Удалить" Name="BtnDeleteSrvc" Click="BtnDeleteSrvc_Click" Style="{StaticResource ActionButton}"/>
-                            </StackPanel>
-                        </Grid>
+                                    <TextBlock Grid.Row="1" TextWrapping="WrapWithOverflow" MinWidth="240" MaxWidth="400"
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding CostFormatted}"/>
+
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal" Visibility="{Binding AdminControlVisibility}">
+                                        <Button Style="{StaticResource ActionButton}" Content="Удалить" Name="BtnDeleteSrvc"  Click="BtnDeleteSrvc_Click"
+                                            Visibility="{Binding AdminControlVisibility}"/>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -97,47 +105,55 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="150" />
                 </Grid.RowDefinitions>
 
-                <StackPanel Style="{StaticResource ClientInfo}">
+                <StackPanel Grid.Column="1"  Style="{StaticResource ClientInfo}">
                     <TextBlock Style="{StaticResource H4}" Text="Имя*"></TextBlock>
                     <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="50" x:Name="TBFirstName" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Style="{StaticResource ClientInfo}">
+                <StackPanel Grid.Column="1" Grid.Row="1" Style="{StaticResource ClientInfo}">
                     <TextBlock Style="{StaticResource H4}" Text="Фамилия*"></TextBlock>
                     <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="50" x:Name="TBSurnameName" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Style="{StaticResource ClientInfo}">
+                <StackPanel Grid.Column="1" Grid.Row="2" Style="{StaticResource ClientInfo}">
                     <TextBlock Style="{StaticResource H4}" Text="Отчество"></TextBlock>
                     <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="50" x:Name="TBPatronumicName" />
                 </StackPanel>
+                <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Margin="5" Height="98" Width="150" BorderThickness="1" BorderBrush="#9466FF">
+                        <Image Name="ImageService">
+                        </Image>
+                    </Border>
+                    <Button Style="{StaticResource ServiceButton}" Height="30" Width="200" Margin="5" Name="BtnSelectImage"  Content="Выбрать" Click="BtnSelectImage_Click"></Button>
+                   
+                </StackPanel>
 
-                <StackPanel Grid.Column="1" Style="{StaticResource ClientInfo}">
+                <StackPanel Grid.Column="1" Grid.Row="3" Style="{StaticResource ClientInfo}" VerticalAlignment="Center" Margin="10,5,0,20">
                     <TextBlock Text="e-mail*" Style="{StaticResource H4}"></TextBlock>
                     <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="255" x:Name="TBEmail" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource ClientInfo}">
+                <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource ClientInfo}" VerticalAlignment="Center" Margin="0,-70,0,0">
                     <TextBlock TextWrapping="WrapWithOverflow" Text="Дата регистрации*" TextAlignment="Right" MaxWidth="86" Style="{StaticResource H4}"></TextBlock>
                     <DatePicker x:Name="DPRegistrationDate" Width="90" Height="24" />
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Grid.Row="2" Style="{StaticResource ClientInfo}">
+                <StackPanel Grid.Column="1" Grid.Row="3" Style="{StaticResource ClientInfo}" VerticalAlignment="Top">
                     <TextBlock Style="{StaticResource H4}" Text="Телефон*"></TextBlock>
                     <TextBox Style="{StaticResource ClientInfoTB}" MaxLength="20" x:Name="TBPhone" />
                 </StackPanel>
 
-                <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource ActionButton}" Height="30" Margin="5, 0"
+                <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource ActionButton}" Height="30" Margin="0,5"
                     Content="Сохранить"
                     Name="BtnSave" 
                     VerticalAlignment="Bottom"
                     Click="BtnSave_Click"
                 />
             </Grid>
+            
         </Grid>
 
         <!--статистика трат-->
